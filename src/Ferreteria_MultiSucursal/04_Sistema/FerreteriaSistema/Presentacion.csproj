@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>10.0</LangVersion>
+    <RootNamespace>FerreteriaSistema</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\04_Programa\Entidad\Entidad.csproj" />
+    <ProjectReference Include="..\..\04_Programa\Negocio\Negocio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Conexion.config (tiene la contraseña) se copia junto al .exe, pero no se sube a Git. -->
+    <None Update="Conexion.config" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
