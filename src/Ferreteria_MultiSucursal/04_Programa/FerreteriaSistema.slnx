@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../04_Sistema/FerreteriaSistema/Presentacion.csproj" />
+  <Project Path="Datos/Datos.csproj" Id="6f448989-0544-46ab-8fbb-f09cf2d2d08a" />
+  <Project Path="Entidad/Entidad.csproj" Id="fca3d39c-ad0d-4ec3-8823-3757c4817e61" />
+  <Project Path="Negocio/Negocio.csproj" Id="656362af-85d9-4b00-8453-fe637cbc22ec" />
+</Solution>
