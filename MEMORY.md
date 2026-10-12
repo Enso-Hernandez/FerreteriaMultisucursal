@@ -6,6 +6,11 @@
 - Repositorio GitHub creado.
 - SqlServer preparado con Docker: contenedor `mi_sql_server` (SQL Server 2022, puerto 1433).
 - Acceso al repositorio compartido con el equipo.
+- Proyecto completo en GitHub: `Enso-Hernandez/FerreteriaMultisucursal` (público, rama `main`).
+  Un solo repositorio en la raíz con un `.gitignore` único. Un clon limpio compila sin
+  errores ni advertencias. No se versionan `Conexion.config`, `bin/`, `obj/`, `.vs/`,
+  `*.user`, `Respaldo_DisenoAnterior/` ni `src/backup/`. El Git antiguo de `04_Programa`
+  (remoto `ProyectoFinalPrograII`) quedó respaldado en `src/backup/04_Programa.git`.
 - Solución por capas (`04_Programa/FerreteriaSistema.slnx`): Entidad, Datos y Negocio
   en .NET Framework 4.8; Presentación migrada de net8.0-windows a net48.
   Compila sin errores ni advertencias (MSBuild de Visual Studio 18).
