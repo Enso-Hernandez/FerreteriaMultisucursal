@@ -12,14 +12,14 @@ namespace FerreteriaSistema.Formularios
     /// </summary>
     public partial class DashboardForm : Form
     {
-        private const int AnchoMenuExpandido = 240;
-        private const int AnchoMenuColapsado = 64;
+        private const int AnchoMenuExpandido = 280;
+        private const int AnchoMenuColapsado = 100;
 
         private readonly string nombreUsuario;
         private readonly string nombreSucursal;
         private IconButton botonActivo;
         private Form formularioActivo;
-        private bool menuColapsado;
+        private bool menuColapsado = true;   // el menú empieza solo con íconos
 
         /// <summary>Indica si el usuario cerró sesión (para volver al Login) o cerró la aplicación.</summary>
         public bool SesionCerrada { get; private set; }
@@ -32,6 +32,7 @@ namespace FerreteriaSistema.Formularios
         public DashboardForm(string usuario, string sucursal)
         {
             InitializeComponent();
+            Tema.AplicarFondo(this);
             nombreUsuario = string.IsNullOrWhiteSpace(usuario) ? "Usuario" : usuario;
             nombreSucursal = string.IsNullOrWhiteSpace(sucursal) ? "Sin sucursal" : sucursal;
         }
@@ -88,11 +89,12 @@ namespace FerreteriaSistema.Formularios
             MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
             Tema.RedondearFormulario(this, 10);
             Tema.AplicarScrollOscuro(pnlBotonesMenu);
-            Tema.HabilitarArrastre(this, pnlEncabezado, pnlMarca, lblTituloFormulario, iconFormularioActual,
-                lblNombreSistema, lblNombreSistemaSub, pictureBoxLogo);
+            Tema.HabilitarArrastre(this, pnlEncabezado, lblTituloFormulario, iconFormularioActual);
 
-            if (pictureBoxLogo.Image == null)
-                pictureBoxLogo.Image = IconChar.Toolbox.ToBitmap(IconFont.Solid, 48, Color.White);
+            // Al desplazar el menú se repinta todo para que el vidrio quede bien detrás de los botones.
+            pnlBotonesMenu.Scroll += (s, ev) => pnlBotonesMenu.Invalidate(true);
+            pnlBotonesMenu.MouseWheel += (s, ev) => pnlBotonesMenu.Invalidate(true);
+            MtdAplicarMenu();
 
             lblNombreUsuario.Text = nombreUsuario;
             lblSucursalActual.Text = nombreSucursal;
@@ -115,6 +117,7 @@ namespace FerreteriaSistema.Formularios
 
         /// <summary>
         /// Dibuja un formulario dentro de pnlContenedorPrincipal (sin bordes, TopLevel = false).
+        /// Tema.AplicarFondo le pone el fondo degradado y vuelve transparentes sus paneles.
         /// </summary>
         public void AbrirFormularioHijo(Form formularioHijo)
         {
@@ -127,6 +130,7 @@ namespace FerreteriaSistema.Formularios
             formularioHijo.TopLevel = false;
             formularioHijo.FormBorderStyle = FormBorderStyle.None;
             formularioHijo.Dock = DockStyle.Fill;
+            Tema.AplicarFondo(formularioHijo);
 
             pnlInicio.Visible = false;
             pnlContenedorPrincipal.Controls.Add(formularioHijo);
@@ -166,54 +170,49 @@ namespace FerreteriaSistema.Formularios
 
             MtdDesactivarBoton();
             botonActivo = boton;
-            botonActivo.BackColor = Tema.FondoSecundario;
+            botonActivo.BackColor = Tema.VidrioClaro;      // resaltado de vidrio
             botonActivo.ForeColor = Color.White;
-            botonActivo.IconColor = Tema.Acento;
+            botonActivo.IconColor = Color.White;
             botonActivo.Font = new Font(botonActivo.Font, FontStyle.Bold);
-
-            pnlIndicador.Location = new Point(0, botonActivo.Top);
-            pnlIndicador.Height = botonActivo.Height;
-            pnlIndicador.Visible = true;
-            pnlIndicador.BringToFront();
 
             iconFormularioActual.IconChar = botonActivo.IconChar;
         }
 
         private void MtdDesactivarBoton()
         {
-            if (botonActivo != null)
-            {
-                botonActivo.BackColor = Tema.FondoMenu;
-                botonActivo.ForeColor = Tema.Texto;
-                botonActivo.IconColor = Tema.Texto;
-                botonActivo.Font = new Font(botonActivo.Font, FontStyle.Regular);
-                botonActivo = null;
-            }
-            pnlIndicador.Visible = false;
+            if (botonActivo == null) return;
+            botonActivo.BackColor = Color.Transparent;
+            botonActivo.ForeColor = Tema.Texto;
+            botonActivo.IconColor = Tema.TextoSecundario;
+            botonActivo.Font = new Font(botonActivo.Font, FontStyle.Regular);
+            botonActivo = null;
         }
 
+        /// <summary>El botón ☰ y el logo abren o cierran el menú lateral.</summary>
         private void btnMenu_Click(object sender, EventArgs e)
         {
             menuColapsado = !menuColapsado;
-            int ancho = menuColapsado ? AnchoMenuColapsado : AnchoMenuExpandido;
+            MtdAplicarMenu();
+        }
 
-            pnlMenuLateral.Width = ancho;
-            pnlMarca.Width = ancho;
-            pictureBoxLogo.Visible = !menuColapsado;
+        /// <summary>Menú expandido (íconos y nombres) o colapsado (solo íconos, el nombre aparece al pasar el mouse).</summary>
+        private void MtdAplicarMenu()
+        {
+            pnlMenuLateral.Width = MtdEscalar(menuColapsado ? AnchoMenuColapsado : AnchoMenuExpandido);
             lblNombreSistema.Visible = !menuColapsado;
             lblNombreSistemaSub.Visible = !menuColapsado;
             lblVersion.Text = menuColapsado ? "v1.0" : "v1.0  ·  2026";
-            iconFormularioActual.Left = ancho + 18;
-            lblTituloFormulario.Left = ancho + 48;
 
             foreach (Control control in pnlBotonesMenu.Controls)
             {
                 IconButton boton = control as IconButton;
                 if (boton != null)
                 {
+                    // Colapsado: botones más altos e íconos más grandes (no hay títulos de sección).
                     boton.Text = menuColapsado ? string.Empty : "   " + Convert.ToString(boton.Tag);
-                    boton.ImageAlign = menuColapsado ? ContentAlignment.MiddleCenter : ContentAlignment.MiddleLeft;
-                    boton.Padding = menuColapsado ? new Padding(0) : new Padding(20, 0, 0, 0);
+                    boton.TextAlign = menuColapsado ? ContentAlignment.MiddleCenter : ContentAlignment.MiddleLeft;
+                    boton.Height = MtdEscalar(menuColapsado ? 40 : 36);
+                    boton.IconSize = menuColapsado ? 21 : 19;
                 }
                 else if (control is Label)
                 {
@@ -221,7 +220,18 @@ namespace FerreteriaSistema.Formularios
                 }
             }
 
-            if (botonActivo != null) pnlIndicador.Top = botonActivo.Top;
+            ttMenu.Active = menuColapsado;   // los nombres flotantes solo hacen falta con el menú colapsado
+            Invalidate(true);                // el contenido se movió: se repinta el fondo degradado
+        }
+
+        /// <summary>
+        /// Ajusta un tamaño en píxeles a la escala de pantalla de Windows (100 %, 125 %...).
+        /// El Diseñador está hecho a 96 DPI y Windows Forms lo escala solo; los tamaños
+        /// escritos en el código se escalan aquí con la misma proporción.
+        /// </summary>
+        private int MtdEscalar(int pixeles)
+        {
+            return (int)Math.Round(pixeles * CurrentAutoScaleDimensions.Width / 96f);
         }
 
         #endregion

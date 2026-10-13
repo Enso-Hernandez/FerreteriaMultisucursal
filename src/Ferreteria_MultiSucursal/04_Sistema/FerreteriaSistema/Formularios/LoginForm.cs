@@ -14,6 +14,7 @@ namespace FerreteriaSistema.Formularios
         public LoginForm()
         {
             InitializeComponent();
+            Tema.AplicarFondo(this);
         }
 
         /// <summary>Sombra suave alrededor del formulario sin bordes.</summary>
@@ -30,11 +31,7 @@ namespace FerreteriaSistema.Formularios
         private void LoginForm_Load(object sender, EventArgs e)
         {
             Tema.RedondearFormulario(this, 18);
-            Tema.HabilitarArrastre(this, this, pictureBoxLogo, lblTitulo, lblSubtitulo, lblPie);
-
-            // Logo por defecto (puedes reemplazarlo en el Diseñador con la imagen de la empresa).
-            if (pictureBoxLogo.Image == null)
-                pictureBoxLogo.Image = IconChar.Toolbox.ToBitmap(IconFont.Solid, 96, Color.White);
+            Tema.HabilitarArrastre(this, this, icoLogo, lblTitulo, lblSubtitulo, lblPie);
 
             // TODO (Capa Negocio): llenar cboxSucursal con las sucursales activas de Tbl_Sucursales.
             if (cboxSucursal.Items.Count > 0) cboxSucursal.SelectedIndex = 0;
