@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -11,12 +11,16 @@ namespace FerreteriaSistema.UI.Controles
     /// <summary>
     /// Botón plano con esquinas redondeadas e ícono de FontAwesome.
     /// Dibuja su propio fondo con GraphicsPath (hover / presionado / deshabilitado).
+    /// - BackColor transparente: solo se ilumina al pasar el mouse (botones de menú o de cerrar).
+    /// - BackColor semitransparente: botón de vidrio.
+    /// - Colores de la paleta (Acento, Éxito, Peligro, Advertencia): se dibujan con degradado.
     /// </summary>
     [ToolboxItem(true)]
     public class BotonRedondeado : IconButton
     {
-        private int radio = 8;
+        private int radio = 10;
         private Color colorHover = Color.Empty;
+        private Color colorDegradado = Color.Empty;
         private bool mouseEncima;
         private bool presionado;
 
@@ -30,7 +34,7 @@ namespace FerreteriaSistema.UI.Controles
 
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderSize = 0;
-            BackColor = ColorTranslator.FromHtml("#3498DB");
+            BackColor = Tema.Acento;
             ForeColor = Color.White;
             IconColor = Color.White;
             IconSize = 20;
@@ -39,7 +43,7 @@ namespace FerreteriaSistema.UI.Controles
             Size = new Size(140, 40);
         }
 
-        [Category("Diseño Dark"), Description("Radio de las esquinas en píxeles."), DefaultValue(8)]
+        [Category("Diseño Dark"), Description("Radio de las esquinas en píxeles."), DefaultValue(10)]
         public int Radio
         {
             get { return radio; }
@@ -53,8 +57,17 @@ namespace FerreteriaSistema.UI.Controles
             set { colorHover = value; Invalidate(); }
         }
 
+        [Category("Diseño Dark"), Description("Segundo color del degradado. Empty = el de la paleta (o un solo color).")]
+        public Color ColorDegradado
+        {
+            get { return colorDegradado; }
+            set { colorDegradado = value; Invalidate(); }
+        }
+
         public bool ShouldSerializeColorHover() { return colorHover != Color.Empty; }
         public void ResetColorHover() { ColorHover = Color.Empty; }
+        public bool ShouldSerializeColorDegradado() { return colorDegradado != Color.Empty; }
+        public void ResetColorDegradado() { ColorDegradado = Color.Empty; }
 
         // Oculta el rectángulo de foco punteado clásico de Windows.
         protected override bool ShowFocusCues { get { return false; } }
@@ -65,27 +78,46 @@ namespace FerreteriaSistema.UI.Controles
         protected override void OnMouseUp(MouseEventArgs e) { presionado = false; Invalidate(); base.OnMouseUp(e); }
         protected override void OnEnabledChanged(EventArgs e) { Invalidate(); base.OnEnabledChanged(e); }
 
+        // El fondo completo se dibuja en OnPaint.
+        protected override void OnPaintBackground(PaintEventArgs pevent) { }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             Tema.ConfigurarCalidad(g);
-            Color fondoPadre = Tema.ObtenerColorFondo(Parent);
-            g.Clear(fondoPadre);
+            Tema.PintarFondo(this, g);
 
             // Color de relleno según el estado visual del botón.
-            Color relleno = BackColor.A == 0 ? fondoPadre : BackColor;
-            if (!Enabled)
-                relleno = Tema.Mezclar(relleno, fondoPadre, 0.65f);
-            else if (presionado)
-                relleno = Tema.Oscurecer(relleno, 0.15f);
-            else if (mouseEncima)
-                relleno = colorHover != Color.Empty ? colorHover : Tema.Aclarar(relleno, 0.12f);
+            Color inicio = BackColor;
+            Color fin = colorDegradado != Color.Empty ? colorDegradado : Tema.ColorFinDegradado(BackColor);
 
-            RectangleF rect = new RectangleF(0, 0, Width - 1f, Height - 1f);
-            using (GraphicsPath ruta = Tema.CrearRutaRedondeada(rect, radio))
-            using (SolidBrush pincel = new SolidBrush(relleno))
+            if (!Enabled)
             {
-                g.FillPath(pincel, ruta);
+                inicio = Tema.ConOpacidad(inicio, inicio.A * 35 / 100);
+                if (fin != Color.Empty) fin = Tema.ConOpacidad(fin, fin.A * 35 / 100);
+            }
+            else if (presionado)
+            {
+                inicio = inicio.A == 0 ? Tema.VidrioClaro : Tema.Oscurecer(inicio, 0.15f);
+                if (fin != Color.Empty) fin = Tema.Oscurecer(fin, 0.15f);
+            }
+            else if (mouseEncima)
+            {
+                if (colorHover != Color.Empty) { inicio = colorHover; fin = Tema.ColorFinDegradado(colorHover); }
+                else
+                {
+                    inicio = inicio.A == 0 ? Tema.Vidrio : Tema.Aclarar(inicio, 0.12f);
+                    if (fin != Color.Empty) fin = Tema.Aclarar(fin, 0.12f);
+                }
+            }
+
+            if (inicio.A > 0)
+            {
+                RectangleF rect = new RectangleF(0, 0, Width - 1f, Height - 1f);
+                using (GraphicsPath ruta = Tema.CrearRutaRedondeada(rect, radio))
+                {
+                    Tema.RellenarRuta(g, ruta, inicio, fin);
+                }
             }
 
             DibujarContenido(g);
@@ -97,7 +129,7 @@ namespace FerreteriaSistema.UI.Controles
             // Sin ícono (IconChar.None) FontAwesome igual crea una imagen vacía: se ignora para centrar el texto.
             Image icono = IconChar == IconChar.None ? null : Image;
             bool hayTexto = !string.IsNullOrEmpty(Text);
-            Color colorTexto = Enabled ? ForeColor : Tema.Mezclar(ForeColor, Tema.ObtenerColorFondo(Parent), 0.55f);
+            Color colorTexto = Enabled ? ForeColor : Tema.Mezclar(ForeColor, Tema.ObtenerColorFondo(this), 0.55f);
 
             Size tamTexto = hayTexto
                 ? TextRenderer.MeasureText(g, Text, Font, Size.Empty, TextFormatFlags.NoPadding)

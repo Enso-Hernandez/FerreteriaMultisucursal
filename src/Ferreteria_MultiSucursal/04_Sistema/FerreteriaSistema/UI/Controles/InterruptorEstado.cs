@@ -13,8 +13,8 @@ namespace FerreteriaSistema.UI.Controles
     [ToolboxItem(true)]
     public class InterruptorEstado : CheckBox
     {
-        private Color colorActivo = ColorTranslator.FromHtml("#27AE60");
-        private Color colorInactivo = ColorTranslator.FromHtml("#3F3F46");
+        private Color colorActivo = Tema.Exito;
+        private Color colorInactivo = Tema.Borde;
         private string textoActivo = "Activo";
         private string textoInactivo = "Inactivo";
 
@@ -25,7 +25,7 @@ namespace FerreteriaSistema.UI.Controles
                    | ControlStyles.OptimizedDoubleBuffer
                    | ControlStyles.ResizeRedraw, true);
             AutoSize = false;
-            ForeColor = ColorTranslator.FromHtml("#E0E0E0");
+            ForeColor = Tema.Texto;
             Font = new Font("Segoe UI", 10.5F);
             Size = new Size(140, 32);
             Cursor = Cursors.Hand;
@@ -62,12 +62,15 @@ namespace FerreteriaSistema.UI.Controles
 
         protected override bool ShowFocusCues { get { return false; } }
 
+        // El fondo completo se dibuja en OnPaint.
+        protected override void OnPaintBackground(PaintEventArgs pevent) { }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             Tema.ConfigurarCalidad(g);
             Color fondoPadre = Tema.ObtenerColorFondo(Parent);
-            g.Clear(fondoPadre);
+            Tema.PintarFondo(this, g);
 
             int altoPista = 22;
             int anchoPista = 44;
@@ -86,7 +89,7 @@ namespace FerreteriaSistema.UI.Controles
             // Perilla circular
             float diametro = altoPista - 6;
             float x = Checked ? pista.Right - diametro - 3 : pista.Left + 3;
-            Color colorPerilla = Enabled ? Color.White : ColorTranslator.FromHtml("#9E9E9E");
+            Color colorPerilla = Enabled ? Color.White : Tema.TextoSecundario;
             using (SolidBrush pincel = new SolidBrush(colorPerilla))
             {
                 g.FillEllipse(pincel, x, y + 3, diametro, diametro);
@@ -95,7 +98,7 @@ namespace FerreteriaSistema.UI.Controles
             // Texto de estado
             string texto = Checked ? textoActivo : textoInactivo;
             Rectangle rectTexto = new Rectangle(anchoPista + 12, 0, Width - anchoPista - 12, Height);
-            Color colorTexto = Enabled ? ForeColor : ColorTranslator.FromHtml("#8A8A8A");
+            Color colorTexto = Enabled ? ForeColor : Tema.TextoSecundario;
             TextRenderer.DrawText(g, texto, Font, rectTexto, colorTexto,
                 TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine);
         }

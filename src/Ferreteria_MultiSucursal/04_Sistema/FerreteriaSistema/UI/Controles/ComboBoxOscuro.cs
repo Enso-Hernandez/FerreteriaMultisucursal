@@ -14,10 +14,10 @@ namespace FerreteriaSistema.UI.Controles
     public class ComboBoxOscuro : ComboBox
     {
         private const int WM_PAINT = 0x000F;
-        private Color colorBorde = ColorTranslator.FromHtml("#3F3F46");
-        private Color colorBordeFoco = ColorTranslator.FromHtml("#3498DB");
-        private Color colorSeleccion = ColorTranslator.FromHtml("#3498DB");
-        private int radio = 8;
+        private Color colorBorde = Tema.Borde;
+        private Color colorBordeFoco = Tema.Acento;
+        private Color colorSeleccion = Tema.Acento;
+        private int radio = 10;
 
         public ComboBoxOscuro()
         {
@@ -25,8 +25,8 @@ namespace FerreteriaSistema.UI.Controles
             DrawMode = DrawMode.OwnerDrawFixed;
             DropDownStyle = ComboBoxStyle.DropDownList;
             FlatStyle = FlatStyle.Flat;
-            BackColor = ColorTranslator.FromHtml("#2D2D30");
-            ForeColor = ColorTranslator.FromHtml("#E0E0E0");
+            BackColor = Tema.FondoSecundario;
+            ForeColor = Tema.Texto;
             Font = new Font("Segoe UI", 10.5F);
             ItemHeight = 34;
             Size = new Size(260, 40);
@@ -54,7 +54,7 @@ namespace FerreteriaSistema.UI.Controles
             set { colorSeleccion = value; Invalidate(); }
         }
 
-        [Category("Diseño Dark"), DefaultValue(8)]
+        [Category("Diseño Dark"), DefaultValue(10)]
         public int Radio
         {
             get { return radio; }
@@ -103,10 +103,8 @@ namespace FerreteriaSistema.UI.Controles
                 Color relleno = Enabled ? BackColor : Tema.Mezclar(BackColor, fondoPadre, 0.5f);
                 Color borde = !Enabled ? Tema.Mezclar(colorBorde, relleno, 0.5f) : (Focused || DroppedDown ? colorBordeFoco : colorBorde);
 
-                using (SolidBrush pincelPadre = new SolidBrush(fondoPadre))
-                {
-                    g.FillRectangle(pincelPadre, ClientRectangle);
-                }
+                // Las esquinas muestran lo que hay detrás (degradado o vidrio de la tarjeta).
+                Tema.PintarFondo(this, g);
 
                 RectangleF rect = new RectangleF(0.5f, 0.5f, Width - 2f, Height - 2f);
                 using (GraphicsPath ruta = Tema.CrearRutaRedondeada(rect, radio))
@@ -120,14 +118,14 @@ namespace FerreteriaSistema.UI.Controles
                 // Texto del elemento seleccionado
                 int anchoFlecha = 32;
                 Rectangle rectTexto = new Rectangle(12, 0, Width - anchoFlecha - 12, Height);
-                Color colorTexto = Enabled ? ForeColor : ColorTranslator.FromHtml("#8A8A8A");
+                Color colorTexto = Enabled ? ForeColor : Tema.TextoSecundario;
                 TextRenderer.DrawText(g, Text, Font, rectTexto, colorTexto,
                     TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine);
 
                 // Flecha tipo "chevron"
                 int cx = Width - anchoFlecha / 2 - 2;
                 int cy = Height / 2;
-                Color colorFlecha = Enabled ? (Focused ? colorBordeFoco : ColorTranslator.FromHtml("#9E9E9E")) : ColorTranslator.FromHtml("#5A5A5A");
+                Color colorFlecha = Enabled ? (Focused ? colorBordeFoco : Tema.TextoSecundario) : Tema.TextoDeshabilitado;
                 using (Pen pluma = new Pen(colorFlecha, 2f))
                 {
                     pluma.StartCap = LineCap.Round;

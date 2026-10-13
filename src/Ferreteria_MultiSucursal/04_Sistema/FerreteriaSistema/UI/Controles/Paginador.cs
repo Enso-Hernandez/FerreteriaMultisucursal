@@ -31,8 +31,10 @@ namespace FerreteriaSistema.UI.Controles
             SetStyle(ControlStyles.UserPaint
                    | ControlStyles.AllPaintingInWmPaint
                    | ControlStyles.OptimizedDoubleBuffer
-                   | ControlStyles.ResizeRedraw, true);
-            ForeColor = ColorTranslator.FromHtml("#9E9E9E");
+                   | ControlStyles.ResizeRedraw
+                   | ControlStyles.SupportsTransparentBackColor, true);
+            BackColor = Color.Transparent;
+            ForeColor = Tema.TextoSecundario;
             Size = new Size(300, 30);
         }
 
@@ -76,11 +78,14 @@ namespace FerreteriaSistema.UI.Controles
             return elementos;
         }
 
+        // El fondo completo se dibuja en OnPaint.
+        protected override void OnPaintBackground(PaintEventArgs e) { }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             Tema.ConfigurarCalidad(g);
-            g.Clear(Tema.ObtenerColorFondo(Parent));
+            Tema.PintarFondo(this, g);
 
             zonas.Clear();
             foreach (Tuple<Rectangle, string, int> elemento in CalcularElementos())
@@ -92,10 +97,12 @@ namespace FerreteriaSistema.UI.Controles
 
                 if (esActual)
                 {
-                    using (GraphicsPath ruta = Tema.CrearRutaRedondeada(rect, 6))
-                    using (SolidBrush relleno = new SolidBrush(Tema.Borde))
+                    using (GraphicsPath ruta = Tema.CrearRutaRedondeada(rect, 8))
+                    using (SolidBrush relleno = new SolidBrush(Tema.VidrioClaro))
+                    using (Pen borde = new Pen(Tema.BordeVidrio, 1f))
                     {
                         g.FillPath(relleno, ruta);
+                        g.DrawPath(borde, ruta);
                     }
                 }
 

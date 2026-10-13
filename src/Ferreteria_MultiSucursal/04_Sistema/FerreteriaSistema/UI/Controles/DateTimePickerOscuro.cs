@@ -8,17 +8,17 @@ using FontAwesome.Sharp;
 namespace FerreteriaSistema.UI.Controles
 {
     /// <summary>
-    /// Selector de fecha con apariencia Dark (fondo #2D2D30, borde redondeado e ícono de calendario).
+    /// Selector de fecha con apariencia Dark (pastilla oscura, borde redondeado e ícono de calendario).
     /// El calendario desplegable es el estándar de Windows.
     /// </summary>
     [ToolboxItem(true)]
     public class DateTimePickerOscuro : DateTimePicker
     {
-        private Color colorFondo = ColorTranslator.FromHtml("#2D2D30");
-        private Color colorTexto = ColorTranslator.FromHtml("#E0E0E0");
-        private Color colorBorde = ColorTranslator.FromHtml("#3F3F46");
-        private Color colorBordeFoco = ColorTranslator.FromHtml("#3498DB");
-        private int radio = 8;
+        private Color colorFondo = Tema.FondoSecundario;
+        private Color colorTexto = Tema.Texto;
+        private Color colorBorde = Tema.Borde;
+        private Color colorBordeFoco = Tema.Acento;
+        private int radio = 10;
         private bool desplegado;
         private Bitmap iconoCalendario;
 
@@ -53,7 +53,7 @@ namespace FerreteriaSistema.UI.Controles
             set { colorBorde = value; Invalidate(); }
         }
 
-        [Category("Diseño Dark"), DefaultValue(8)]
+        [Category("Diseño Dark"), DefaultValue(10)]
         public int Radio
         {
             get { return radio; }
@@ -67,12 +67,15 @@ namespace FerreteriaSistema.UI.Controles
         protected override void OnGotFocus(EventArgs e) { base.OnGotFocus(e); Invalidate(); }
         protected override void OnLostFocus(EventArgs e) { base.OnLostFocus(e); Invalidate(); }
 
+        // El fondo completo se dibuja en OnPaint.
+        protected override void OnPaintBackground(PaintEventArgs pevent) { }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             Tema.ConfigurarCalidad(g);
             Color fondoPadre = Tema.ObtenerColorFondo(Parent);
-            g.Clear(fondoPadre);
+            Tema.PintarFondo(this, g);
 
             Color relleno = Enabled ? colorFondo : Tema.Mezclar(colorFondo, fondoPadre, 0.5f);
             Color borde = !Enabled ? Tema.Mezclar(colorBorde, relleno, 0.5f) : (Focused || desplegado ? colorBordeFoco : colorBorde);
@@ -93,11 +96,11 @@ namespace FerreteriaSistema.UI.Controles
             else texto = Value.ToShortDateString();
 
             Rectangle rectTexto = new Rectangle(12, 0, Width - 48, Height);
-            TextRenderer.DrawText(g, texto, Font, rectTexto, Enabled ? colorTexto : ColorTranslator.FromHtml("#8A8A8A"),
+            TextRenderer.DrawText(g, texto, Font, rectTexto, Enabled ? colorTexto : Tema.TextoSecundario,
                 TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine);
 
             if (iconoCalendario == null)
-                iconoCalendario = IconChar.CalendarDays.ToBitmap(IconFont.Auto, 18, ColorTranslator.FromHtml("#9E9E9E"));
+                iconoCalendario = IconChar.CalendarDays.ToBitmap(IconFont.Auto, 18, Tema.TextoSecundario);
             g.DrawImage(iconoCalendario, Width - 32, (Height - iconoCalendario.Height) / 2);
         }
 

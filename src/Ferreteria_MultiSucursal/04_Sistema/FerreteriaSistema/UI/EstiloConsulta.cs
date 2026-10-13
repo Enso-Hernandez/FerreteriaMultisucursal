@@ -30,11 +30,14 @@ namespace FerreteriaSistema.UI
     {
         #region Colores y fuentes de la tabla
 
+        // La tabla no tiene fondo propio: cada celda pinta lo que hay detrás (degradado + vidrio de la tarjeta)
+        // y encima se dibujan el encabezado y las filas con vidrio semitransparente.
         private static readonly Color FondoTabla = Tema.FondoTarjeta;
-        private static readonly Color FondoEncabezado = Tema.FondoSecundario;
-        private static readonly Color FondoFila = Tema.Mezclar(Tema.FondoTarjeta, Tema.FondoSecundario, 0.45f);
-        private static readonly Color FondoFilaSeleccionada = Tema.Mezclar(FondoFila, Tema.Acento, 0.16f);
-        private static readonly Color FondoInsignia = Tema.FondoPrincipal;
+        private static readonly Color FondoEncabezado = Tema.Vidrio;
+        private static readonly Color FondoFila = Color.FromArgb(10, 255, 255, 255);
+        private static readonly Color FondoFilaSeleccionada = Tema.ConOpacidad(Tema.Acento, 46);
+        private static readonly Color BordeFila = Color.FromArgb(22, 255, 255, 255);
+        private static readonly Color FondoInsignia = Tema.Vidrio;
 
         private static readonly Font FuenteEncabezado = new Font("Segoe UI", 10F, FontStyle.Bold);
         private static readonly Font FuenteTexto = new Font("Segoe UI", 10F, FontStyle.Regular);
@@ -103,8 +106,10 @@ namespace FerreteriaSistema.UI
             // La paginación reemplaza a la barra de desplazamiento.
             dgv.ScrollBars = ScrollBars.None;
             dgv.BackgroundColor = FondoTabla;
+            Tema.ActivarDobleBuffer(dgv);
             foreach (DataGridViewColumn columna in dgv.Columns) columna.SortMode = DataGridViewColumnSortMode.Programmatic;
 
+            dgv.Paint += Dgv_Paint;
             dgv.CellPainting += Dgv_CellPainting;
             dgv.CellMouseClick += Dgv_CellMouseClick;
             dgv.CellMouseMove += Dgv_CellMouseMove;
@@ -453,24 +458,26 @@ namespace FerreteriaSistema.UI
             bool seleccionado = filtro == filtroActivo;
             bool neutro = filtro.Color == Color.Empty;
 
+            // Pastillas de vidrio: la seleccionada es más opaca.
             Color fondo, letra;
             if (neutro)
             {
-                fondo = seleccionado ? Tema.Mezclar(Tema.FondoSecundario, Color.White, 0.16f) : Tema.FondoSecundario;
+                fondo = seleccionado ? Color.FromArgb(46, 255, 255, 255) : Tema.Vidrio;
                 letra = seleccionado ? Color.White : Tema.TextoSecundario;
             }
             else
             {
-                fondo = Tema.Mezclar(Tema.FondoSecundario, filtro.Color, seleccionado ? 0.55f : 0.22f);
+                fondo = Tema.ConOpacidad(filtro.Color, seleccionado ? 150 : 40);
                 letra = seleccionado ? Color.White : Tema.Aclarar(filtro.Color, 0.45f);
             }
 
             chip.Text = texto;
             chip.Width = TextRenderer.MeasureText(texto, chip.Font).Width + 28;
+            chip.Radio = chip.Height / 2;
             chip.BackColor = fondo;
             chip.ForeColor = letra;
             chip.IconColor = letra;
-            chip.ColorHover = Tema.Aclarar(fondo, 0.08f);
+            chip.ColorHover = Tema.ConOpacidad(Tema.Aclarar(fondo, 0.15f), fondo.A + 25);
         }
 
         #endregion
@@ -530,6 +537,12 @@ namespace FerreteriaSistema.UI
 
         #region Dibujo de la tabla
 
+        /// <summary>Debajo de la última fila se ve el vidrio de la tarjeta (no el color sólido de la tabla).</summary>
+        private void Dgv_Paint(object sender, PaintEventArgs e)
+        {
+            Tema.PintarAreaVaciaTabla(dgv, e.Graphics);
+        }
+
         private void Dgv_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex < 0) return;
@@ -560,7 +573,7 @@ namespace FerreteriaSistema.UI
                 switch (config.Tipo)
                 {
                     case TipoColumna.Codigo:
-                        TextRenderer.DrawText(g, TextoCodigo(config, e.Value), FuenteCodigo, area, Tema.Acento, FormatoTexto);
+                        TextRenderer.DrawText(g, TextoCodigo(config, e.Value), FuenteCodigo, area, Tema.Lila, FormatoTexto);
                         break;
                     case TipoColumna.Insignia:
                         string texto = Convert.ToString(e.FormattedValue);
@@ -591,12 +604,12 @@ namespace FerreteriaSistema.UI
 
         private void PintarEncabezado(Graphics g, Rectangle celda, DataGridViewColumn columna)
         {
-            using (SolidBrush fondo = new SolidBrush(FondoTabla)) g.FillRectangle(fondo, celda);
+            Tema.PintarFondo(dgv, g, celda);
 
             // Banda del encabezado redondeada: cada celda dibuja su parte de la misma banda.
             Rectangle banda = new Rectangle(-dgv.HorizontalScrollingOffset, celda.Y + 2, AnchoVisible(), celda.Height - 6);
             g.SetClip(celda);
-            using (GraphicsPath ruta = Tema.CrearRutaRedondeada(banda, 8))
+            using (GraphicsPath ruta = Tema.CrearRutaRedondeada(banda, 10))
             using (SolidBrush relleno = new SolidBrush(FondoEncabezado))
             {
                 g.FillPath(relleno, ruta);
@@ -611,7 +624,7 @@ namespace FerreteriaSistema.UI
             {
                 // La flecha va después del título; el título deja libre su espacio para no encimarse.
                 IconChar flecha = columna != columnaOrden ? IconChar.Sort : (ordenAscendente ? IconChar.SortUp : IconChar.SortDown);
-                Color color = columna == columnaOrden ? Tema.Acento : Tema.TextoDeshabilitado;
+                Color color = columna == columnaOrden ? Tema.Lila : Tema.TextoDeshabilitado;
                 Bitmap imagen = Tema.Icono(flecha, color, 16);
                 int x = Math.Min(area.X + Medir(columna.HeaderText, FuenteEncabezado) + 4, area.Right + 2);
                 g.DrawImage(imagen, x, area.Y + (area.Height - imagen.Height) / 2);
@@ -620,14 +633,14 @@ namespace FerreteriaSistema.UI
 
         private void PintarFondoFila(Graphics g, Rectangle celda, bool seleccionada)
         {
-            using (SolidBrush fondo = new SolidBrush(FondoTabla)) g.FillRectangle(fondo, celda);
+            Tema.PintarFondo(dgv, g, celda);
 
             // Tarjeta de la fila (con separación arriba y abajo). Cada celda dibuja su parte.
             Rectangle tarjeta = new Rectangle(-dgv.HorizontalScrollingOffset + 1, celda.Y + 3, AnchoVisible() - 3, celda.Height - 6);
             g.SetClip(celda);
-            using (GraphicsPath ruta = Tema.CrearRutaRedondeada(tarjeta, 8))
+            using (GraphicsPath ruta = Tema.CrearRutaRedondeada(tarjeta, 10))
             using (SolidBrush relleno = new SolidBrush(seleccionada ? FondoFilaSeleccionada : FondoFila))
-            using (Pen borde = new Pen(seleccionada ? Tema.Acento : Tema.Borde, 1f))
+            using (Pen borde = new Pen(seleccionada ? Tema.ConOpacidad(Tema.Acento, 170) : BordeFila, 1f))
             {
                 g.FillPath(relleno, ruta);
                 g.DrawPath(borde, ruta);
@@ -644,8 +657,8 @@ namespace FerreteriaSistema.UI
         private static void PintarInsignia(Graphics g, Rectangle area, string texto, IconChar icono, Color color)
         {
             bool neutro = color == Color.Empty;
-            Color fondo = neutro ? FondoInsignia : Tema.Mezclar(FondoFila, color, 0.22f);
-            Color borde = neutro ? Tema.Borde : Tema.Mezclar(FondoFila, color, 0.55f);
+            Color fondo = neutro ? FondoInsignia : Tema.ConOpacidad(color, 40);
+            Color borde = neutro ? Tema.BordeVidrio : Tema.ConOpacidad(color, 110);
             Color letra = neutro ? Tema.Texto : Tema.Aclarar(color, 0.40f);
             Color colorIcono = neutro ? Tema.TextoSecundario : letra;
 
@@ -677,13 +690,13 @@ namespace FerreteriaSistema.UI
         {
             Rectangle cuadro = new Rectangle(area.X - 2, area.Y + (area.Height - 28) / 2, 28, 28);
             using (GraphicsPath ruta = Tema.CrearRutaRedondeada(cuadro, 8))
-            using (SolidBrush relleno = new SolidBrush(FondoInsignia))
-            using (Pen pluma = new Pen(Tema.Borde, 1f))
+            using (SolidBrush relleno = new SolidBrush(Tema.ConOpacidad(Tema.Acento, 40)))
+            using (Pen pluma = new Pen(Tema.ConOpacidad(Tema.Acento, 90), 1f))
             {
                 g.FillPath(relleno, ruta);
                 g.DrawPath(pluma, ruta);
             }
-            Bitmap imagen = Tema.Icono(config.Icono, Tema.Acento, 20);
+            Bitmap imagen = Tema.Icono(config.Icono, Tema.Lila, 20);
             g.DrawImage(imagen, cuadro.X + (cuadro.Width - imagen.Width) / 2, cuadro.Y + (cuadro.Height - imagen.Height) / 2);
 
             int x = cuadro.Right + 10;
@@ -770,9 +783,9 @@ namespace FerreteriaSistema.UI
 
             if (columnaNotas != null)
             {
-                using (GraphicsPath ruta = Tema.CrearRutaRedondeada(zonas[2], 6))
-                using (SolidBrush relleno = new SolidBrush(Tema.FondoSecundario))
-                using (Pen pluma = new Pen(Tema.Borde, 1f))
+                using (GraphicsPath ruta = Tema.CrearRutaRedondeada(zonas[2], 8))
+                using (SolidBrush relleno = new SolidBrush(Tema.Vidrio))
+                using (Pen pluma = new Pen(Tema.BordeVidrio, 1f))
                 {
                     g.FillPath(relleno, ruta);
                     g.DrawPath(pluma, ruta);

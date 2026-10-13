@@ -9,9 +9,9 @@ using FontAwesome.Sharp;
 namespace FerreteriaSistema.UI.Controles
 {
     /// <summary>
-    /// Cuadro de texto Dark: fondo #2D2D30, sin borde 3D, esquinas redondeadas,
-    /// línea de acento al recibir el foco, texto de ayuda (placeholder) y modo contraseña.
-    /// Opcional: ícono a la izquierda (Icono) y resplandor azul al enfocar (Resplandor).
+    /// Cuadro de texto Dark: pastilla oscura sin borde 3D, esquinas redondeadas,
+    /// borde de acento al recibir el foco, texto de ayuda (placeholder) y modo contraseña.
+    /// Opcional: ícono a la izquierda (Icono) y resplandor violeta al enfocar (Resplandor).
     /// Se usa igual que un TextBox: txtNombre.Text, txtNombre.Enabled, etc.
     /// </summary>
     [ToolboxItem(true)]
@@ -20,10 +20,10 @@ namespace FerreteriaSistema.UI.Controles
     public class TextBoxOscuro : UserControl
     {
         private readonly TextBox txtInterno;
-        private int radio = 8;
-        private Color colorFondo = ColorTranslator.FromHtml("#2D2D30");
-        private Color colorBorde = ColorTranslator.FromHtml("#3F3F46");
-        private Color colorBordeFoco = ColorTranslator.FromHtml("#3498DB");
+        private int radio = 10;
+        private Color colorFondo = Tema.FondoSecundario;
+        private Color colorBorde = Tema.Borde;
+        private Color colorBordeFoco = Tema.Acento;
         private string placeholder = string.Empty;
         private bool soloDecimales;
         private bool enfocado;
@@ -44,7 +44,7 @@ namespace FerreteriaSistema.UI.Controles
             {
                 BorderStyle = BorderStyle.None,
                 BackColor = colorFondo,
-                ForeColor = ColorTranslator.FromHtml("#E0E0E0"),
+                ForeColor = Tema.Texto,
                 Font = new Font("Segoe UI", 10.5F)
             };
 
@@ -57,7 +57,7 @@ namespace FerreteriaSistema.UI.Controles
 
             Controls.Add(txtInterno);
 
-            ForeColor = ColorTranslator.FromHtml("#E0E0E0");
+            ForeColor = Tema.Texto;
             Font = new Font("Segoe UI", 10.5F);
             Padding = new Padding(12, 8, 12, 8);
             Size = new Size(260, 40);
@@ -124,7 +124,7 @@ namespace FerreteriaSistema.UI.Controles
             set { soloDecimales = value; txtInterno.TextAlign = value ? HorizontalAlignment.Right : HorizontalAlignment.Left; }
         }
 
-        [Category("Diseño Dark"), DefaultValue(8)]
+        [Category("Diseño Dark"), DefaultValue(10)]
         public int Radio
         {
             get { return radio; }
@@ -138,7 +138,7 @@ namespace FerreteriaSistema.UI.Controles
             set { icono = value; AjustarTextoInterno(); Invalidate(); }
         }
 
-        [Category("Diseño Dark"), Description("Dibuja un brillo azul alrededor del borde cuando el campo tiene el foco."), DefaultValue(false)]
+        [Category("Diseño Dark"), Description("Dibuja un brillo del color de foco alrededor del borde cuando el campo tiene el foco."), DefaultValue(false)]
         public bool Resplandor
         {
             get { return resplandor; }
@@ -285,11 +285,14 @@ namespace FerreteriaSistema.UI.Controles
 
         #region Dibujo (GraphicsPath)
 
+        // El fondo completo se dibuja en OnPaint.
+        protected override void OnPaintBackground(PaintEventArgs e) { }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             Tema.ConfigurarCalidad(g);
-            g.Clear(Tema.ObtenerColorFondo(Parent));
+            Tema.PintarFondo(this, g);
             if (txtInterno == null) return;
 
             Color relleno = Enabled ? colorFondo : Tema.Mezclar(colorFondo, Tema.ObtenerColorFondo(Parent), 0.5f);
@@ -342,7 +345,7 @@ namespace FerreteriaSistema.UI.Controles
                 TextFormatFlags flags = TextFormatFlags.NoPadding | TextFormatFlags.EndEllipsis |
                     (txtInterno.Multiline ? TextFormatFlags.WordBreak | TextFormatFlags.Top : TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine) |
                     (soloDecimales ? TextFormatFlags.Right : TextFormatFlags.Left);
-                Color colorTexto = vacio ? ColorTranslator.FromHtml("#5A5A5A") : ColorTranslator.FromHtml("#8A8A8A");
+                Color colorTexto = vacio ? Tema.TextoDeshabilitado : Tema.TextoSecundario;
                 TextRenderer.DrawText(g, texto, Font, rectTexto, colorTexto, flags);
             }
         }

@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -7,33 +7,34 @@ using FontAwesome.Sharp;
 namespace FerreteriaSistema.UI.Controles
 {
     /// <summary>
-    /// Tarjeta de resumen de la pestaña Consultar: ícono, título y un valor grande.
-    /// Opcionalmente muestra una insignia azul junto al título (por ejemplo, el número de alertas).
-    /// Uso: tarjTotal.Valor = "1,240";
+    /// Tarjeta de resumen de la pestaña Consultar: cuadro de color con ícono, título y un valor grande.
+    /// Opcionalmente muestra una insignia junto al título (por ejemplo, el número de alertas).
+    /// BackColor puede ser semitransparente (vidrio). Uso: tarjTotal.Valor = "1,240";
     /// </summary>
     [ToolboxItem(true)]
     public class TarjetaResumen : Control
     {
         private static readonly Font FuenteTitulo = new Font("Segoe UI", 9.75F, FontStyle.Regular);
-        private static readonly Font FuenteValor = new Font("Segoe UI", 14F, FontStyle.Bold);
+        private static readonly Font FuenteValor = new Font("Segoe UI", 15F, FontStyle.Bold);
         private static readonly Font FuenteInsignia = new Font("Segoe UI", 8F, FontStyle.Bold);
 
         private string titulo = "Título:";
         private string valor = "0";
         private string insignia = string.Empty;
         private IconChar icono = IconChar.LayerGroup;
-        private Color colorIcono = ColorTranslator.FromHtml("#9E9E9E");
-        private int radio = 12;
+        private Color colorIcono = Tema.Lila;
+        private int radio = 18;
 
         public TarjetaResumen()
         {
             SetStyle(ControlStyles.UserPaint
                    | ControlStyles.AllPaintingInWmPaint
                    | ControlStyles.OptimizedDoubleBuffer
-                   | ControlStyles.ResizeRedraw, true);
-            BackColor = ColorTranslator.FromHtml("#252526");
-            ForeColor = ColorTranslator.FromHtml("#E0E0E0");
-            Size = new Size(300, 72);
+                   | ControlStyles.ResizeRedraw
+                   | ControlStyles.SupportsTransparentBackColor, true);
+            BackColor = Tema.Vidrio;
+            ForeColor = Tema.Texto;
+            Size = new Size(300, 76);
         }
 
         [Category("Diseño Dark"), Description("Texto pequeño de la tarjeta."), DefaultValue("Título:")]
@@ -64,41 +65,45 @@ namespace FerreteriaSistema.UI.Controles
             set { icono = value; Invalidate(); }
         }
 
-        [Category("Diseño Dark"), Description("Color del ícono.")]
+        [Category("Diseño Dark"), Description("Color del cuadro del ícono (se dibuja con degradado).")]
         public Color ColorIcono
         {
             get { return colorIcono; }
             set { colorIcono = value; Invalidate(); }
         }
 
-        [Category("Diseño Dark"), DefaultValue(12)]
+        [Category("Diseño Dark"), DefaultValue(18)]
         public int Radio
         {
             get { return radio; }
             set { radio = value < 0 ? 0 : value; Invalidate(); }
         }
 
+        // El fondo completo se dibuja en OnPaint.
+        protected override void OnPaintBackground(PaintEventArgs e) { }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             Tema.ConfigurarCalidad(g);
-            g.Clear(Tema.ObtenerColorFondo(Parent));
+            Tema.PintarFondo(this, g);
 
-            // Fondo de la tarjeta
+            // Tarjeta de vidrio
             using (GraphicsPath ruta = Tema.CrearRutaRedondeada(new RectangleF(0, 0, Width - 1f, Height - 1f), radio))
             using (SolidBrush relleno = new SolidBrush(BackColor))
+            using (Pen borde = new Pen(Tema.BordeVidrio, 1f))
             {
                 g.FillPath(relleno, ruta);
+                g.DrawPath(borde, ruta);
             }
 
-            // Cuadro del ícono
-            Rectangle cuadro = new Rectangle(14, (Height - 40) / 2, 40, 40);
-            using (GraphicsPath ruta = Tema.CrearRutaRedondeada(cuadro, 10))
-            using (SolidBrush relleno = new SolidBrush(Tema.Mezclar(Tema.FondoSecundario, colorIcono, 0.15f)))
+            // Cuadro del ícono con degradado (color claro arriba a la izquierda, más oscuro abajo)
+            Rectangle cuadro = new Rectangle(16, (Height - 42) / 2, 42, 42);
+            using (GraphicsPath ruta = Tema.CrearRutaRedondeada(cuadro, 12))
             {
-                g.FillPath(relleno, ruta);
+                Tema.RellenarRuta(g, ruta, Tema.Aclarar(colorIcono, 0.10f), Tema.Oscurecer(colorIcono, 0.30f));
             }
-            Bitmap imagen = Tema.Icono(icono, colorIcono, 26);
+            Bitmap imagen = Tema.Icono(icono, Color.White, 22);
             g.DrawImage(imagen, cuadro.X + (cuadro.Width - imagen.Width) / 2, cuadro.Y + (cuadro.Height - imagen.Height) / 2);
 
             // Título (y su insignia) arriba, valor abajo
@@ -112,9 +117,8 @@ namespace FerreteriaSistema.UI.Controles
                 Size tamInsignia = TextRenderer.MeasureText(g, insignia, FuenteInsignia, Size.Empty, TextFormatFlags.NoPadding);
                 Rectangle rectInsignia = new Rectangle(x + tamTitulo.Width + 6, centro - tamTitulo.Height - 1, tamInsignia.Width + 12, tamTitulo.Height);
                 using (GraphicsPath ruta = Tema.CrearRutaRedondeada(rectInsignia, rectInsignia.Height / 2))
-                using (SolidBrush relleno = new SolidBrush(Tema.Acento))
                 {
-                    g.FillPath(relleno, ruta);
+                    Tema.RellenarRuta(g, ruta, Tema.Acento, Tema.AcentoFin);
                 }
                 TextRenderer.DrawText(g, insignia, FuenteInsignia, rectInsignia, Color.White,
                     TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding);
