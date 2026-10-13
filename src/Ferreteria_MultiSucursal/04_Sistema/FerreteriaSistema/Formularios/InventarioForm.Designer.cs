@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlEncabezadoForm = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblTitulo = new FerreteriaSistema.UI.Controles.EtiquetaDegradado();
             this.lblModo = new System.Windows.Forms.Label();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.pnlPestanas = new FerreteriaSistema.UI.Controles.PanelRedondeado();
@@ -124,7 +124,7 @@
             this.pnlEncabezadoForm.Controls.Add(this.lblSubtitulo);
             this.pnlEncabezadoForm.Controls.Add(this.lblModo);
             this.pnlEncabezadoForm.Controls.Add(this.lblTitulo);
-            this.pnlEncabezadoForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlEncabezadoForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(26)))));
             this.pnlEncabezadoForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlEncabezadoForm.Name = "pnlEncabezadoForm";
             this.pnlEncabezadoForm.Size = new System.Drawing.Size(988, 72);
@@ -142,7 +142,7 @@
             // 
             this.lblModo.AutoSize = true;
             this.lblModo.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.lblModo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.lblModo.Location = new System.Drawing.Point(170, 14);
             this.lblModo.Name = "lblModo";
             this.lblModo.Text = "●  Consulta";
@@ -151,7 +151,7 @@
             // 
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.lblSubtitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.lblSubtitulo.Location = new System.Drawing.Point(0, 42);
             this.lblSubtitulo.Name = "lblSubtitulo";
             this.lblSubtitulo.Text = "Controla el inventario general de cada sucursal.";
@@ -161,7 +161,7 @@
             this.pnlPestanas.Controls.Add(this.btnTabGestionar);
             this.pnlPestanas.Controls.Add(this.btnTabConsultar);
             this.pnlPestanas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPestanas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.pnlPestanas.ColorRelleno = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.pnlPestanas.Location = new System.Drawing.Point(668, 12);
             this.pnlPestanas.Name = "pnlPestanas";
             this.pnlPestanas.Padding = new System.Windows.Forms.Padding(4);
@@ -170,7 +170,7 @@
             // 
             // btnTabConsultar
             // 
-            this.btnTabConsultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnTabConsultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
             this.btnTabConsultar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTabConsultar.FlatAppearance.BorderSize = 0;
             this.btnTabConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -190,14 +190,14 @@
             // 
             // btnTabGestionar
             // 
-            this.btnTabGestionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnTabGestionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.btnTabGestionar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTabGestionar.FlatAppearance.BorderSize = 0;
             this.btnTabGestionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTabGestionar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTabGestionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.btnTabGestionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.btnTabGestionar.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
-            this.btnTabGestionar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.btnTabGestionar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.btnTabGestionar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTabGestionar.IconSize = 16;
             this.btnTabGestionar.Location = new System.Drawing.Point(136, 4);
@@ -211,15 +211,15 @@
             // btnCerrar
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnCerrar.ColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.ColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(63)))), ((int)(((byte)(94)))));
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.btnCerrar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.btnCerrar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.btnCerrar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCerrar.IconSize = 18;
             this.btnCerrar.Location = new System.Drawing.Point(948, 14);
@@ -248,7 +248,7 @@
             this.tabConsultar.Controls.Add(this.tlpResumen);
             this.tabConsultar.Controls.Add(this.pnlEspacioConsulta);
             this.tabConsultar.Controls.Add(this.pnlBusqueda);
-            this.tabConsultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.tabConsultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(26)))));
             this.tabConsultar.Location = new System.Drawing.Point(4, 26);
             this.tabConsultar.Name = "tabConsultar";
             this.tabConsultar.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
@@ -262,7 +262,7 @@
             this.pnlBusqueda.Controls.Add(this.flpFiltros);
             this.pnlBusqueda.Controls.Add(this.pnlEspacioFiltros);
             this.pnlBusqueda.Controls.Add(this.pnlFilaBuscar);
-            this.pnlBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.pnlBusqueda.ColorRelleno = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.pnlBusqueda.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlBusqueda.Name = "pnlBusqueda";
             this.pnlBusqueda.Padding = new System.Windows.Forms.Padding(14, 12, 14, 12);
@@ -274,14 +274,14 @@
             this.pnlFilaBuscar.Controls.Add(this.btnBuscar);
             this.pnlFilaBuscar.Controls.Add(this.txtBuscar);
             this.pnlFilaBuscar.Controls.Add(this.pnlEspacioBuscar);
-            this.pnlFilaBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.pnlFilaBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
             this.pnlFilaBuscar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFilaBuscar.Name = "pnlFilaBuscar";
             this.pnlFilaBuscar.Size = new System.Drawing.Size(952, 48);
             // 
             // pnlEspacioFiltros
             // 
-            this.pnlEspacioFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.pnlEspacioFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
             this.pnlEspacioFiltros.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlEspacioFiltros.Name = "pnlEspacioFiltros";
             this.pnlEspacioFiltros.Size = new System.Drawing.Size(952, 8);
@@ -291,7 +291,7 @@
             this.flpFiltros.Controls.Add(this.chpTodos);
             this.flpFiltros.Controls.Add(this.chpStockBajo);
             this.flpFiltros.Controls.Add(this.chpCriticos);
-            this.flpFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.flpFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
             this.flpFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpFiltros.Name = "flpFiltros";
             this.flpFiltros.Size = new System.Drawing.Size(952, 32);
@@ -299,14 +299,14 @@
             // 
             // chpTodos
             // 
-            this.chpTodos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.chpTodos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.chpTodos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chpTodos.FlatAppearance.BorderSize = 0;
             this.chpTodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chpTodos.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chpTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.chpTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.chpTodos.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.chpTodos.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.chpTodos.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.chpTodos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.chpTodos.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.chpTodos.Name = "chpTodos";
@@ -318,14 +318,14 @@
             // 
             // chpStockBajo
             // 
-            this.chpStockBajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.chpStockBajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.chpStockBajo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chpStockBajo.FlatAppearance.BorderSize = 0;
             this.chpStockBajo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chpStockBajo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chpStockBajo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.chpStockBajo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.chpStockBajo.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.chpStockBajo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.chpStockBajo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.chpStockBajo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.chpStockBajo.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.chpStockBajo.Name = "chpStockBajo";
@@ -337,14 +337,14 @@
             // 
             // chpCriticos
             // 
-            this.chpCriticos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.chpCriticos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.chpCriticos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chpCriticos.FlatAppearance.BorderSize = 0;
             this.chpCriticos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chpCriticos.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chpCriticos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.chpCriticos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.chpCriticos.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.chpCriticos.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.chpCriticos.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.chpCriticos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.chpCriticos.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.chpCriticos.Name = "chpCriticos";
@@ -356,12 +356,12 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.txtBuscar.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.txtBuscar.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtBuscar.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(45)))), ((int)(((byte)(87)))));
+            this.txtBuscar.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
+            this.txtBuscar.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.txtBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
             this.txtBuscar.Placeholder = "Buscar inventario por nombre o ubicación...";
@@ -372,14 +372,14 @@
             // 
             // pnlEspacioBuscar
             // 
-            this.pnlEspacioBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.pnlEspacioBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
             this.pnlEspacioBuscar.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlEspacioBuscar.Name = "pnlEspacioBuscar";
             this.pnlEspacioBuscar.Size = new System.Drawing.Size(142, 48);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.FlatAppearance.BorderSize = 0;
@@ -401,14 +401,14 @@
             // 
             // pnlEspacioConsulta
             // 
-            this.pnlEspacioConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlEspacioConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(26)))));
             this.pnlEspacioConsulta.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlEspacioConsulta.Name = "pnlEspacioConsulta";
             this.pnlEspacioConsulta.Size = new System.Drawing.Size(980, 10);
             // 
             // tlpResumen
             // 
-            this.tlpResumen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.tlpResumen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(26)))));
             this.tlpResumen.ColumnCount = 3;
             this.tlpResumen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tlpResumen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
@@ -424,8 +424,8 @@
             // 
             // tarjTotal
             // 
-            this.tarjTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.tarjTotal.ColorIcono = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.tarjTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tarjTotal.ColorIcono = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
             this.tarjTotal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tarjTotal.Icono = FontAwesome.Sharp.IconChar.BoxesStacked;
             this.tarjTotal.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
@@ -436,8 +436,8 @@
             // 
             // tarjResumen
             // 
-            this.tarjResumen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.tarjResumen.ColorIcono = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(156)))), ((int)(((byte)(18)))));
+            this.tarjResumen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tarjResumen.ColorIcono = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
             this.tarjResumen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tarjResumen.Icono = FontAwesome.Sharp.IconChar.TriangleExclamation;
             this.tarjResumen.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
@@ -448,8 +448,8 @@
             // 
             // tarjActualizacion
             // 
-            this.tarjActualizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.tarjActualizacion.ColorIcono = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.tarjActualizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tarjActualizacion.ColorIcono = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(211)))), ((int)(((byte)(238)))));
             this.tarjActualizacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tarjActualizacion.Icono = FontAwesome.Sharp.IconChar.ArrowsRotate;
             this.tarjActualizacion.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -460,7 +460,7 @@
             // 
             // pnlEspacioResumen
             // 
-            this.pnlEspacioResumen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlEspacioResumen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(26)))));
             this.pnlEspacioResumen.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlEspacioResumen.Name = "pnlEspacioResumen";
             this.pnlEspacioResumen.Size = new System.Drawing.Size(980, 10);
@@ -469,7 +469,7 @@
             // 
             this.pnlTabla.Controls.Add(this.dgvDatos);
             this.pnlTabla.Controls.Add(this.pnlPie);
-            this.pnlTabla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.pnlTabla.ColorRelleno = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.pnlTabla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTabla.Name = "pnlTabla";
             this.pnlTabla.Padding = new System.Windows.Forms.Padding(12, 12, 12, 6);
@@ -478,43 +478,43 @@
             // 
             // dgvDatos
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(79)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(44)))), ((int)(((byte)(122)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.dgvDatos.AllowUserToAddRows = false;
             this.dgvDatos.AllowUserToDeleteRows = false;
             this.dgvDatos.AllowUserToResizeRows = false;
             this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDatos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.dgvDatos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
             this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDatos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvDatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDatos.ColumnHeadersHeight = 40;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.colCodigoInventario, this.colCodigoSucursal, this.colNombreInventario, this.colUbicacion, this.colCantidadInventario, this.colCantidadMinimaInventario, this.colObservaciones, this.colAcciones });
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(26)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(79)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(44)))), ((int)(((byte)(122)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.EnableHeadersVisualStyles = false;
-            this.dgvDatos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.dgvDatos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
@@ -594,7 +594,7 @@
             // 
             this.lblRegistros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblRegistros.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.lblRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.lblRegistros.Name = "lblRegistros";
             this.lblRegistros.Size = new System.Drawing.Size(596, 34);
             this.lblRegistros.Text = "0 registros";
@@ -604,16 +604,16 @@
             // 
             this.pnlPie.Controls.Add(this.lblRegistros);
             this.pnlPie.Controls.Add(this.pagConsulta);
-            this.pnlPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.pnlPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
             this.pnlPie.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlPie.Name = "pnlPie";
             this.pnlPie.Size = new System.Drawing.Size(956, 34);
             // 
             // pagConsulta
             // 
-            this.pagConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.pagConsulta.BackColor = System.Drawing.Color.Transparent;
             this.pagConsulta.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pagConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.pagConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.pagConsulta.Name = "pagConsulta";
             this.pagConsulta.Size = new System.Drawing.Size(360, 34);
             // 
@@ -622,7 +622,7 @@
             this.tabGestionar.Controls.Add(this.pnlFormulario);
             this.tabGestionar.Controls.Add(this.pnlEspacioAcciones);
             this.tabGestionar.Controls.Add(this.pnlAcciones);
-            this.tabGestionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.tabGestionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(26)))));
             this.tabGestionar.Location = new System.Drawing.Point(4, 26);
             this.tabGestionar.Name = "tabGestionar";
             this.tabGestionar.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
@@ -636,7 +636,7 @@
             this.pnlFormulario.Controls.Add(this.tlpCampos);
             this.pnlFormulario.Controls.Add(this.lblSeccionDesc);
             this.pnlFormulario.Controls.Add(this.lblSeccion);
-            this.pnlFormulario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.pnlFormulario.ColorRelleno = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.pnlFormulario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFormulario.Name = "pnlFormulario";
             this.pnlFormulario.Padding = new System.Windows.Forms.Padding(28, 18, 28, 12);
@@ -658,7 +658,7 @@
             // 
             this.lblSeccionDesc.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblSeccionDesc.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeccionDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.lblSeccionDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(161)))), ((int)(((byte)(196)))));
             this.lblSeccionDesc.Name = "lblSeccionDesc";
             this.lblSeccionDesc.Size = new System.Drawing.Size(924, 26);
             this.lblSeccionDesc.Text = "Los campos marcados con * son obligatorios.";
@@ -682,7 +682,7 @@
             this.tlpCampos.Controls.Add(this.txtObservaciones, 0, 7);
             this.tlpCampos.AutoSize = true;
             this.tlpCampos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpCampos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.tlpCampos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
             this.tlpCampos.ColumnCount = 2;
             this.tlpCampos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpCampos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -705,7 +705,7 @@
             // 
             this.lblCodigoInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCodigoInventario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblCodigoInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.lblCodigoInventario.Margin = new System.Windows.Forms.Padding(0, 0, 10, 4);
             this.lblCodigoInventario.Name = "lblCodigoInventario";
             this.lblCodigoInventario.Size = new System.Drawing.Size(200, 26);
@@ -714,12 +714,12 @@
             // 
             // txtCodigoInventario
             // 
-            this.txtCodigoInventario.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.txtCodigoInventario.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.txtCodigoInventario.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtCodigoInventario.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(45)))), ((int)(((byte)(87)))));
+            this.txtCodigoInventario.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
+            this.txtCodigoInventario.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.txtCodigoInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCodigoInventario.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCodigoInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.txtCodigoInventario.Margin = new System.Windows.Forms.Padding(0, 2, 10, 8);
             this.txtCodigoInventario.Name = "txtCodigoInventario";
             this.txtCodigoInventario.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -731,7 +731,7 @@
             // 
             this.lblSucursal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSucursal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.lblSucursal.Margin = new System.Windows.Forms.Padding(10, 0, 0, 4);
             this.lblSucursal.Name = "lblSucursal";
             this.lblSucursal.Size = new System.Drawing.Size(200, 26);
@@ -740,17 +740,17 @@
             // 
             // cboSucursal
             // 
-            this.cboSucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.cboSucursal.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.cboSucursal.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.cboSucursal.ColorSeleccion = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.cboSucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
+            this.cboSucursal.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(45)))), ((int)(((byte)(87)))));
+            this.cboSucursal.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
+            this.cboSucursal.ColorSeleccion = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
             this.cboSucursal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboSucursal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboSucursal.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSucursal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboSucursal.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cboSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.cboSucursal.FormattingEnabled = true;
             this.cboSucursal.ItemHeight = 34;
             this.cboSucursal.Margin = new System.Windows.Forms.Padding(10, 2, 0, 8);
@@ -761,7 +761,7 @@
             // 
             this.lblNombreInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblNombreInventario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblNombreInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.lblNombreInventario.Margin = new System.Windows.Forms.Padding(0, 0, 10, 4);
             this.lblNombreInventario.Name = "lblNombreInventario";
             this.lblNombreInventario.Size = new System.Drawing.Size(200, 26);
@@ -770,12 +770,12 @@
             // 
             // txtNombreInventario
             // 
-            this.txtNombreInventario.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.txtNombreInventario.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.txtNombreInventario.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtNombreInventario.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(45)))), ((int)(((byte)(87)))));
+            this.txtNombreInventario.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
+            this.txtNombreInventario.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.txtNombreInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNombreInventario.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtNombreInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.txtNombreInventario.Margin = new System.Windows.Forms.Padding(0, 2, 10, 8);
             this.txtNombreInventario.MaxLength = 45;
             this.txtNombreInventario.Name = "txtNombreInventario";
@@ -787,7 +787,7 @@
             // 
             this.lblUbicacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblUbicacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUbicacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblUbicacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.lblUbicacion.Margin = new System.Windows.Forms.Padding(10, 0, 0, 4);
             this.lblUbicacion.Name = "lblUbicacion";
             this.lblUbicacion.Size = new System.Drawing.Size(200, 26);
@@ -796,12 +796,12 @@
             // 
             // txtUbicacion
             // 
-            this.txtUbicacion.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.txtUbicacion.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.txtUbicacion.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtUbicacion.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(45)))), ((int)(((byte)(87)))));
+            this.txtUbicacion.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
+            this.txtUbicacion.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.txtUbicacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtUbicacion.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUbicacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtUbicacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.txtUbicacion.Margin = new System.Windows.Forms.Padding(10, 2, 0, 8);
             this.txtUbicacion.MaxLength = 20;
             this.txtUbicacion.Name = "txtUbicacion";
@@ -813,7 +813,7 @@
             // 
             this.lblCantidadInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCantidadInventario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblCantidadInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.lblCantidadInventario.Margin = new System.Windows.Forms.Padding(0, 0, 10, 4);
             this.lblCantidadInventario.Name = "lblCantidadInventario";
             this.lblCantidadInventario.Size = new System.Drawing.Size(200, 26);
@@ -822,12 +822,12 @@
             // 
             // txtCantidadInventario
             // 
-            this.txtCantidadInventario.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.txtCantidadInventario.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.txtCantidadInventario.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtCantidadInventario.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(45)))), ((int)(((byte)(87)))));
+            this.txtCantidadInventario.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
+            this.txtCantidadInventario.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.txtCantidadInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCantidadInventario.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCantidadInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.txtCantidadInventario.Margin = new System.Windows.Forms.Padding(0, 2, 10, 8);
             this.txtCantidadInventario.Name = "txtCantidadInventario";
             this.txtCantidadInventario.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -839,7 +839,7 @@
             // 
             this.lblCantidadMinimaInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCantidadMinimaInventario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadMinimaInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblCantidadMinimaInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.lblCantidadMinimaInventario.Margin = new System.Windows.Forms.Padding(10, 0, 0, 4);
             this.lblCantidadMinimaInventario.Name = "lblCantidadMinimaInventario";
             this.lblCantidadMinimaInventario.Size = new System.Drawing.Size(200, 26);
@@ -848,12 +848,12 @@
             // 
             // txtCantidadMinimaInventario
             // 
-            this.txtCantidadMinimaInventario.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.txtCantidadMinimaInventario.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.txtCantidadMinimaInventario.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtCantidadMinimaInventario.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(45)))), ((int)(((byte)(87)))));
+            this.txtCantidadMinimaInventario.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
+            this.txtCantidadMinimaInventario.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.txtCantidadMinimaInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCantidadMinimaInventario.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadMinimaInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCantidadMinimaInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.txtCantidadMinimaInventario.Margin = new System.Windows.Forms.Padding(10, 2, 0, 8);
             this.txtCantidadMinimaInventario.Name = "txtCantidadMinimaInventario";
             this.txtCantidadMinimaInventario.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -865,7 +865,7 @@
             // 
             this.lblObservaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblObservaciones.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObservaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblObservaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.lblObservaciones.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.lblObservaciones.Name = "lblObservaciones";
             this.lblObservaciones.Size = new System.Drawing.Size(200, 26);
@@ -874,12 +874,12 @@
             // 
             // txtObservaciones
             // 
-            this.txtObservaciones.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.txtObservaciones.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.txtObservaciones.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtObservaciones.ColorBorde = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(45)))), ((int)(((byte)(87)))));
+            this.txtObservaciones.ColorBordeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
+            this.txtObservaciones.ColorFondo = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(24)))), ((int)(((byte)(52)))));
             this.txtObservaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtObservaciones.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtObservaciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.txtObservaciones.Margin = new System.Windows.Forms.Padding(0, 2, 0, 8);
             this.txtObservaciones.MaxLength = 45;
             this.txtObservaciones.Name = "txtObservaciones";
@@ -890,7 +890,7 @@
             // pnlAcciones
             // 
             this.pnlAcciones.Controls.Add(this.flpAcciones);
-            this.pnlAcciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.pnlAcciones.ColorRelleno = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.pnlAcciones.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlAcciones.Name = "pnlAcciones";
             this.pnlAcciones.Padding = new System.Windows.Forms.Padding(14, 12, 14, 12);
@@ -904,7 +904,7 @@
             this.flpAcciones.Controls.Add(this.btnGuardar);
             this.flpAcciones.Controls.Add(this.btnEliminar);
             this.flpAcciones.Controls.Add(this.btnCancelar);
-            this.flpAcciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.flpAcciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
             this.flpAcciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpAcciones.Name = "flpAcciones";
             this.flpAcciones.Size = new System.Drawing.Size(952, 44);
@@ -912,7 +912,7 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
             this.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNuevo.FlatAppearance.BorderSize = 0;
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -933,14 +933,14 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.FlatAppearance.BorderSize = 0;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
-            this.btnEditar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnEditar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
             this.btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEditar.IconSize = 18;
             this.btnEditar.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
@@ -954,7 +954,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -975,7 +975,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(63)))), ((int)(((byte)(94)))));
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -996,7 +996,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1017,7 +1017,7 @@
             // 
             // pnlEspacioAcciones
             // 
-            this.pnlEspacioAcciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlEspacioAcciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(26)))));
             this.pnlEspacioAcciones.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlEspacioAcciones.Name = "pnlEspacioAcciones";
             this.pnlEspacioAcciones.Size = new System.Drawing.Size(980, 14);
@@ -1026,10 +1026,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(10)))), ((int)(((byte)(26)))));
             this.ClientSize = new System.Drawing.Size(1036, 656);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InventarioForm";
             this.Padding = new System.Windows.Forms.Padding(24, 20, 24, 20);
@@ -1077,7 +1077,7 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlEncabezadoForm;
-        private System.Windows.Forms.Label lblTitulo;
+        private FerreteriaSistema.UI.Controles.EtiquetaDegradado lblTitulo;
         private System.Windows.Forms.Label lblModo;
         private System.Windows.Forms.Label lblSubtitulo;
         private FerreteriaSistema.UI.Controles.PanelRedondeado pnlPestanas;

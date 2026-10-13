@@ -26,6 +26,7 @@ namespace FerreteriaSistema.Formularios
         {
             Tema.AplicarScrollOscuro(dgvDatos);
             Tema.AplicarScrollOscuro(dgvDetalle);
+            Tema.TablaDeVidrio(dgvDetalle);
             lblModo.Left = lblTitulo.Right + 10;
             MtdConfigurarConsulta();
 
