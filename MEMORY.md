@@ -9,7 +9,7 @@
 - Proyecto completo en GitHub: `Enso-Hernandez/FerreteriaMultisucursal` (público, rama `main`).
   Un solo repositorio en la raíz con un `.gitignore` único. Un clon limpio compila sin
   errores ni advertencias. No se versionan `Conexion.config`, `bin/`, `obj/`, `.vs/`,
-  `*.user`, `Respaldo_DisenoAnterior/` ni `src/backup/`. El Git antiguo de `04_Programa`
+  `*.user` ni `src/backup/`. El Git antiguo de `04_Programa`
   (remoto `ProyectoFinalPrograII`) quedó respaldado en `src/backup/04_Programa.git`.
 - Solución por capas (`04_Programa/FerreteriaSistema.slnx`): Entidad, Datos y Negocio
   en .NET Framework 4.8; Presentación migrada de net8.0-windows a net48.
@@ -74,10 +74,10 @@
 - Las 10 pantallas nuevas son CRUD simple (no maestro-detalle). Las llaves foráneas son
   ComboBox vacíos que se llenarán desde Negocio. Las listas fijas usan los valores
   exactos de los datos de prueba (por ejemplo "Credito" y "Camion", sin tilde).
-- Los 16 `FrmXxx` del diseño antiguo (verde/celeste) y `FrmPrincipal` se movieron sin
-  modificar a `04_Sistema/Respaldo_DisenoAnterior/`, fuera del proyecto, para que el
-  Explorador de soluciones muestre solo las pantallas de `Formularios/`. Ningún código
-  los usaba. Presentación compila sin ellos (15 módulos + Login + Dashboard).
+- El diseño antiguo (verde/celeste: 16 `FrmXxx` y `FrmPrincipal`) se eliminó por completo:
+  la carpeta de respaldo, el código que les aplicaba el tema oscuro (`Tema.AplicarTemaOscuro`
+  y su uso en el Dashboard) y la compilación vieja de net8. Solo quedan las pantallas de
+  `Formularios/` (15 módulos + Login + Dashboard).
 - Consultar: los filtros, el orden y la paginación trabajan sobre los registros ya
   cargados en la tabla (no consultan la base). Inventario: Crítico = Cantidad ≤ Mínimo;
   Stock bajo = Mínimo < Cantidad ≤ 1.5 × Mínimo. Al conectar un módulo a las capas solo

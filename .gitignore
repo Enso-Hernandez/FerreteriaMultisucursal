@@ -370,8 +370,5 @@ FodyWeavers.xsd
 # copiando Conexion.ejemplo.config como Conexion.config.
 Conexion.config
 
-# Pantallas del diseño anterior: solo respaldo local, el programa no las usa.
-src/Ferreteria_MultiSucursal/04_Sistema/Respaldo_DisenoAnterior/
-
 # Respaldos locales (por ejemplo, el Git antiguo de 04_Programa).
 src/backup/

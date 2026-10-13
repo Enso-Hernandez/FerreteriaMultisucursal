@@ -115,7 +115,6 @@ namespace FerreteriaSistema.Formularios
 
         /// <summary>
         /// Dibuja un formulario dentro de pnlContenedorPrincipal (sin bordes, TopLevel = false).
-        /// Los formularios antiguos (FrmXxx) reciben el tema oscuro automáticamente.
         /// </summary>
         public void AbrirFormularioHijo(Form formularioHijo)
         {
@@ -128,10 +127,6 @@ namespace FerreteriaSistema.Formularios
             formularioHijo.TopLevel = false;
             formularioHijo.FormBorderStyle = FormBorderStyle.None;
             formularioHijo.Dock = DockStyle.Fill;
-
-            // Formularios que aún no fueron rediseñados: se les aplica la paleta Dark al vuelo.
-            if (formularioHijo.GetType().Namespace != typeof(DashboardForm).Namespace)
-                Tema.AplicarTemaOscuro(formularioHijo);
 
             pnlInicio.Visible = false;
             pnlContenedorPrincipal.Controls.Add(formularioHijo);
