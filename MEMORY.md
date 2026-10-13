@@ -39,6 +39,22 @@
   `UI/Controles/Paginador.cs`; `TextBoxOscuro` ganó `Icono` y `Resplandor` (opcionales).
   Probado: Sucursales con datos reales (filtros, orden, paginación, acciones y CRUD
   completo) y las otras 14 con filas de ejemplo. Gestionar no cambió.
+- Rediseño "Vidrio oscuro" (según imagen de referencia) en las 17 pantallas: Login,
+  Dashboard y los 15 módulos. Fondo degradado con resplandores violeta, turquesa y rosa,
+  tarjetas de vidrio, títulos con letras en degradado y botones en degradado.
+  Revisado con capturas (Consultar y Gestionar de cada módulo, sin restos del diseño
+  anterior). El CRUD de Sucursales y la navegación por los 15 módulos siguen funcionando.
+  - Menú lateral: mismos 15 botones y secciones en el mismo orden; empieza solo con íconos y
+    se abre con ☰ o con el logo.
+  - Base técnica: `Tema.PintarFondo` (cada control pinta el degradado y el vidrio que tiene
+    detrás), `Tema.AplicarFondo` (un formulario completo; el Dashboard lo aplica a cada
+    pantalla que abre), `Tema.TablaDeVidrio` (tablas de detalle, como la de Compras),
+    `PanelRedondeado.ColorRelleno` (color de la tarjeta; BackColor queda transparente) y los
+    controles nuevos `MosaicoIcono` y `EtiquetaDegradado`. Se eliminó `PictureBoxRedondeado`.
+  - Los colores semitransparentes se mezclan con `CompositingQuality.AssumeLinear`; con
+    `HighQuality` el vidrio se ve gris claro.
+  - Tamaños escritos en el código del Dashboard se escalan con `CurrentAutoScaleDimensions`
+    (la pantalla de desarrollo está al 125 %).
 
 ## En desarrollo
 - Preparación del entorno de IA.
